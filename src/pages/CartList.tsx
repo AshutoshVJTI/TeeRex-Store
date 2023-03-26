@@ -63,6 +63,8 @@ const CartList: React.FC<CartListProps> = ({ items, cartIds, setCartIds }) => {
               item={item}
               count={idCount.find((count) => count.id === item.id)?.count || 1}
               onRemoveItem={onRemoveItem}
+              setIdCount={setIdCount}
+              idCount={idCount}
             />
           ))}
           <div className="flex justify-end mt-4 font-bold text-xl">

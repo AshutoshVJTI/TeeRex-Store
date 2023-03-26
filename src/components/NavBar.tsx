@@ -23,7 +23,7 @@ const NavBar = ({ cartCount, showCartPage, setShowCartPage }: NavBarProps) => {
   return (
     <nav className="bg-gray-600 py-4 mb-6">
       <div className="container flex justify-between items-center">
-        <div className="text-2xl font-bold text-white">TeeRex Store</div>
+        <button className="text-2xl font-bold text-white" onClick={handleProductsClick}>TeeRex Store</button>
         <div className="flex items-center">
           <button
             className="block md:hidden mr-4 text-white"

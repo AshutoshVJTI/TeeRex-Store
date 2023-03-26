@@ -2,11 +2,27 @@ import React from "react";
 import { CartItemProps } from "../../types/Cart";
 import { formatPrice } from "../../utils/utils";
 
-const CartItem = ({ item, count, onRemoveItem }: CartItemProps) => {
+const CartItem = ({
+  item,
+  count,
+  onRemoveItem,
+  idCount,
+  setIdCount,
+}: CartItemProps) => {
   const { id, name, price, imageURL, quantity, currency, gender } = item;
-
   const handleRemoveItem = () => {
     onRemoveItem(id);
+  };
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedIdCount = idCount.map((item) => {
+      if (item.id === id) {
+        return { id, count: parseInt(e.target.value) };
+      } else {
+        return item;
+      }
+    });
+    setIdCount(updatedIdCount);
   };
 
   return (
@@ -36,6 +52,7 @@ const CartItem = ({ item, count, onRemoveItem }: CartItemProps) => {
             max={quantity}
             value={count <= quantity ? count : quantity}
             className="w-16 px-2 py-1 text-center border rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+            onChange={handleQuantityChange}
           />
           <button
             type="button"
